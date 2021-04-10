@@ -1,0 +1,67 @@
+html{
+    font-size: 62.5%;
+}
+
+@mixin flextype {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+@mixin  header($para, $capital) {
+        color: $letter-color;
+          font-family: $f-family;
+        transition: $transitions;
+       text-transform: $capital;
+        letter-spacing: $para;
+}
+
+$bg-color: rgb(35, 199, 199);
+$letter-color: white ;
+$letter-size: 5.3rem;
+$f-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+$transitions: .3s ease ;
+$hover-color: black;
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    background-color: $bg-color;
+}
+
+.main{
+    position: absolute;
+    left: 50%;
+    top:30%;
+    transform: translate(-50%, -50%);
+    @include flextype;
+
+    h3{
+        @include header(.1rem, uppercase);
+        font-size: 3rem;
+        &:hover{
+          color: $hover-color;
+         }
+         &::after{
+             content: ' :)';
+         }
+    }
+    
+    h1{
+       @include header(0rem, capitalize);
+       font-size: $letter-size;
+        &:hover{
+            color: $hover-color;
+        }
+        &::before{
+            content: " '";
+        }
+        &::after{
+            content: "'";
+        }
+       }
+ 
+}
